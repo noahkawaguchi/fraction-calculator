@@ -25,17 +25,13 @@ body {
   margin: auto;
 }
 
-#first-num {
+.input-area {
   display: flex;
 }
 
-#first-num > * {
-  padding: 10px;
+.input-area > * {
+  padding: 5px;
   margin: auto;
-}
-
-#first-input {
-  display: flex;
 }
 
 .number-input {
@@ -44,5 +40,5 @@ body {
 }
 
 .integer-input {
-  margin: auto;
+  margin: auto auto auto 20px;
 }

@@ -10,22 +10,37 @@
     <h1>Fraction Calculator</h1>
     <p id="tag-line">Most calculators think in decimals. <br>This one thinks in fractions.</p>
     <div id="input-form">
-      <div id="first-num">
+      <div id="first-num" class="input-area">
         <select name="first-kind" id="first-kind">
           <option value="fraction" selected>Fraction</option>
           <option value="mixed-number">Mixed Number</option>
           <option value="integer">Integer</option>
         </select>
-        <div id="first-input">
-          <input id="first-integer" class="number-input integer-input" type="number" inputmode="numeric" hidden>
-          <div id="first-fraction" class="fraction-input">
+        <div id="first-input" class="input-area">
+          <div>
+            <input id="first-integer" class="number-input integer-input" type="number" inputmode="numeric" hidden>
+          </div>
+          <div class="fraction-input">
             <input id="first-numerator" class="number-input" type="number" inputmode="numeric"><br>
             <input id="first-denominator" class="number-input" type="number" inputmode="numeric">
           </div>
         </div>
       </div>
-      <div id="second-num">
-
+      <div id="second-num" class="input-area">
+        <select name="second-kind" id="second-kind">
+          <option value="fraction" selected>Fraction</option>
+          <option value="mixed-number">Mixed Number</option>
+          <option value="integer">Integer</option>
+        </select>
+        <div id="second-input" class="input-area">
+          <div>
+            <input id="second-integer" class="number-input integer-input" type="number" inputmode="numeric" hidden>
+          </div>
+          <div class="fraction-input">
+            <input id="second-numerator" class="number-input" type="number" inputmode="numeric"><br>
+            <input id="second-denominator" class="number-input" type="number" inputmode="numeric">
+          </div>
+        </div>
       </div>
       <button id="calculate-btn">Calculate</button>
     </div>
