@@ -15,3 +15,34 @@ body {
 #tag-line {
   font-style: italic;
 }
+
+#input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#input-form > * {
+  margin: auto;
+}
+
+#first-num {
+  display: flex;
+}
+
+#first-num > * {
+  padding: 10px;
+  margin: auto;
+}
+
+#first-input {
+  display: flex;
+}
+
+.number-input {
+  width: 6ch;
+  margin: 5px;
+}
+
+.integer-input {
+  margin: auto;
+}
