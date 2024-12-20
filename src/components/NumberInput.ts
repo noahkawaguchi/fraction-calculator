@@ -5,15 +5,28 @@ import Fraction from "fraction.js";
  */
 export class NumberInput {
   constructor(
-    private kindSelect: HTMLSelectElement,
+    private negativeSign: HTMLParagraphElement,
     private integerInput: HTMLInputElement,
     private numeratorInput: HTMLInputElement,
     private denominatorInput: HTMLInputElement,
+    private signSelect: HTMLSelectElement,
+    private kindSelect: HTMLSelectElement,
   ) {
-    this.kindSelect.addEventListener<'change'>('change', this.responsiveInputVisibility.bind(this));
     this.integerInput.addEventListener<'input'>('input', this.enforceNumericInput);
     this.numeratorInput.addEventListener<'input'>('input', this.enforceNumericInput);
     this.denominatorInput.addEventListener<'input'>('input', this.enforceNumericInput);
+    this.signSelect.addEventListener<'change'>('change', this.negativeVisibility.bind(this));
+    this.kindSelect.addEventListener<'change'>('change', this.responsiveInputVisibility.bind(this));
+  }
+
+
+  /** Hides or shows the negative sign depending on the user's selection. */
+  private negativeVisibility(): void {
+    if (this.signSelect.value === 'Negative') {
+      this.negativeSign.hidden = false;
+    } else {
+      this.negativeSign.hidden = true;
+    }
   }
 
   /**
@@ -38,17 +51,17 @@ export class NumberInput {
     this.numeratorInput.value = '0';
     this.denominatorInput.value = '1';
     switch (this.kindSelect.value) {
-      case 'fraction':
+      case 'Fraction':
         this.integerInput.hidden = true;
         this.numeratorInput.hidden = false;
         this.denominatorInput.hidden = false;
         break;
-      case 'mixed-number':
+      case 'Mixed Number':
         this.integerInput.hidden = false;
         this.numeratorInput.hidden = false;
         this.denominatorInput.hidden = false;
         break;
-      case 'integer':
+      case 'Integer':
         this.integerInput.hidden = false;
         this.numeratorInput.hidden = true;
         this.denominatorInput.hidden = true;
@@ -67,6 +80,9 @@ export class NumberInput {
     const numeratorPart: number = parseInt(this.numeratorInput.value);
     const denominatorPart: number = parseInt(this.denominatorInput.value);
     const ret = new Fraction((integerPart * denominatorPart + numeratorPart), denominatorPart);
+    if (this.signSelect.value === 'Negative') {
+      return ret.neg();
+    }
     return ret;
   }
 
