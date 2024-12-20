@@ -14,24 +14,28 @@ body {
 
 #tag-line {
   font-style: italic;
+  margin: 15px auto 45px;
 }
 
 #input-form {
   display: flex;
-  flex-direction: column;
+  margin: auto;
 }
 
 #input-form > * {
   margin: auto;
 }
 
-.input-area {
-  display: flex;
+.number-area {
+  border: 1px solid black;
+  background-color: #4c486a;
+  padding: 5px;
 }
 
-.input-area > * {
-  padding: 5px;
-  margin: auto;
+.input-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .number-input {
@@ -39,6 +43,20 @@ body {
   margin: 5px;
 }
 
-.integer-input {
-  margin: auto auto auto 20px;
+.number-options {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+#operator-div {
+  margin: auto 15px;
+}
+
+#operator {
+  font-size: 1rem;
+}
+
+#calculate-div {
+  margin: 15px;
 }

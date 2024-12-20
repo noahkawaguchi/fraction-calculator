@@ -17,7 +17,7 @@ export class NumberInput {
   }
 
   /**
-   * Remove any non-numeric characters from an input element as they are entered
+   * Removes any non-numeric characters from an input element as they are entered.
    * @param event - the input event that triggers the method
    */
   private enforceNumericInput(event: Event): void {
@@ -26,16 +26,17 @@ export class NumberInput {
   }
 
   /**
-   * Clear the value of all input fields and set their visibility based on the 
-   *    user's selected type of number. 
+   * Sets the input fields visibility and values.
    * 
-   * `display` for the input elements should not be set with CSS so that 
-   *    `hidden` can be set to true or false here.
+   * This method resets the input fields' values to their default 0 0/1 (integer=0, numerator=0, 
+   * denominator=1) and sets their visibility based on the user's selected type of number. 
+   * `display` for the input elements should not be set with CSS so that `hidden` can be set to 
+   * true or false here.
    */
   private responsiveInputVisibility(): void {
-    this.integerInput.value = '';
-    this.numeratorInput.value = '';
-    this.denominatorInput.value = '';
+    this.integerInput.value = '0';
+    this.numeratorInput.value = '0';
+    this.denominatorInput.value = '1';
     switch (this.kindSelect.value) {
       case 'fraction':
         this.integerInput.hidden = true;
@@ -58,22 +59,13 @@ export class NumberInput {
   }
 
   /**
-   * Create a Fraction object from the user's inputs. Default values of 0 0/1 (integer=0, 
-   *    numerator=0, denominator=0) are provided for cases when not all of the fields are visible 
-   *    and used. 
-   * 
+   * Creates a Fraction object from the user's inputs. 
    * @returns the Fraction object
    */
   public getFraction(): Fraction {
-    const integerPart: number = this.integerInput.value 
-                                    ? parseInt(this.integerInput.value) 
-                                    : 0;
-    const numeratorPart: number = this.numeratorInput.value 
-                                      ? parseInt(this.numeratorInput.value) 
-                                      : 0;
-    const denominatorPart: number = this.denominatorInput.value 
-                                      ? parseInt(this.denominatorInput.value) 
-                                      : 1;
+    const integerPart: number = parseInt(this.integerInput.value);
+    const numeratorPart: number = parseInt(this.numeratorInput.value);
+    const denominatorPart: number = parseInt(this.denominatorInput.value);
     const ret = new Fraction((integerPart * denominatorPart + numeratorPart), denominatorPart);
     return ret;
   }
