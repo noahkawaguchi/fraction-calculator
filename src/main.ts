@@ -21,21 +21,34 @@ const secondNumber = new NumberInput(
 );
 
 
-
-
+const operation = document.getElementById('operation') as HTMLSelectElement;
 const calculateBtn = document.getElementById('calculate-btn') as HTMLButtonElement;
+const result = document.getElementById('result') as HTMLParagraphElement;
 
 
 calculateBtn.addEventListener('click', (): void => {
 
 
 
-  console.log(firstNumber.getFraction().toFraction(true));
-  console.log(secondNumber.getFraction().toFraction(true));
+  const firstFrac: Fraction = firstNumber.getFraction();
+  const secondFrac: Fraction = secondNumber.getFraction();
 
-
-
-
+  switch (operation.value) {
+    case '+':
+      result.textContent = firstFrac.add(secondFrac).toFraction(true);
+      break;
+    case '-':
+      result.textContent = firstFrac.sub(secondFrac).toFraction(true);
+      break;
+    case '✕':
+      result.textContent = firstFrac.mul(secondFrac).toFraction(true);
+      break;
+    case '÷':
+      result.textContent = firstFrac.div(secondFrac).toFraction(true);
+      break;
+    default:
+      break;
+  }
 
 
 });

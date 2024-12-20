@@ -67,14 +67,14 @@ hr {
   margin: auto;
 }
 
-#operator-div {
+#operation-div {
   margin: auto 15px;
 }
 
-#operator {
-  font-size: 1.2rem;
+#operation {
+  font-size: 1.35rem;
 }
 
 #calculate-div {
-  margin: 15px;
+  margin: 20px auto;
 }

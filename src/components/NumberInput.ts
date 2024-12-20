@@ -1,7 +1,7 @@
 import Fraction from "fraction.js";
 
-/**
- * Handles element visibility and input validation for user input of numbers
+/** 
+ * Handles element visibility, input validation, and Fraction conversion for user input of numbers.
  */
 export class NumberInput {
   constructor(
@@ -18,7 +18,6 @@ export class NumberInput {
     this.signSelect.addEventListener<'change'>('change', this.negativeVisibility.bind(this));
     this.kindSelect.addEventListener<'change'>('change', this.responsiveInputVisibility.bind(this));
   }
-
 
   /** Hides or shows the negative sign depending on the user's selection. */
   private negativeVisibility(): void {

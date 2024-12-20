@@ -61,8 +61,8 @@
             </select>
           </div>
         </div>
-        <div id="operator-div">
-          <select id="operator">
+        <div id="operation-div">
+          <select id="operation">
             <option selected>+</option>
             <option>-</option>
             <option>✕</option>
@@ -120,6 +120,15 @@
       </div>
       <div id="calculate-div">
         <button id="calculate-btn">Calculate</button>
+      </div>
+      <div id="result-area">
+        <p id="result"></p>
+        <label for="result-kind">See results as:</label>
+        <select name="result-kind" id="result-kind">
+          <option selected>Mixed Number</option>
+          <option>Improper Fraction</option>
+          <option>Decimal</option>
+        </select>
       </div>
     </main>
     <script type="module" src="./src/main.ts"></script>
