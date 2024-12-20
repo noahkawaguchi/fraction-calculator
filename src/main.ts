@@ -1,6 +1,13 @@
 import Fraction from "fraction.js";
+// import katex from "katex"; // Uncomment for manual rendering
+import "katex/dist/katex.min.css"; // Import KaTeX CSS
+import renderMathInElement from "katex/contrib/auto-render"; // For automatic rendering
 
 import { NumberInput } from "./components/NumberInput";
+import { Result } from "./components/Result";
+
+// Automatically render TeX in the document body
+document.addEventListener("DOMContentLoaded", renderAllTex);
 
 const firstNumber = new NumberInput(
   document.getElementById('first-negative') as HTMLParagraphElement,
@@ -20,35 +27,31 @@ const secondNumber = new NumberInput(
   document.getElementById('second-kind') as HTMLSelectElement,
 );
 
+const result = new Result(
+  document.getElementById('operation') as HTMLSelectElement,
+  document.getElementById('result-tex') as HTMLParagraphElement,
+  document.getElementById('result-kind-select') as HTMLSelectElement,
+)
 
-const operation = document.getElementById('operation') as HTMLSelectElement;
 const calculateBtn = document.getElementById('calculate-btn') as HTMLButtonElement;
-const result = document.getElementById('result') as HTMLParagraphElement;
-
 
 calculateBtn.addEventListener('click', (): void => {
-
-
 
   const firstFrac: Fraction = firstNumber.getFraction();
   const secondFrac: Fraction = secondNumber.getFraction();
 
-  switch (operation.value) {
-    case '+':
-      result.textContent = firstFrac.add(secondFrac).toFraction(true);
-      break;
-    case '-':
-      result.textContent = firstFrac.sub(secondFrac).toFraction(true);
-      break;
-    case '✕':
-      result.textContent = firstFrac.mul(secondFrac).toFraction(true);
-      break;
-    case '÷':
-      result.textContent = firstFrac.div(secondFrac).toFraction(true);
-      break;
-    default:
-      break;
-  }
-
+  result.showAnswer(firstFrac, secondFrac);
+  renderAllTex();
 
 });
+
+/** Renders all TeX in the document body */
+function renderAllTex(): void {
+  renderMathInElement(document.body, {
+      delimiters: [
+          { left: "$$", right: "$$", display: true },  // Display math
+          { left: "\\(", right: "\\)", display: false } // Inline math
+      ],
+      throwOnError: false // Avoid errors breaking the page
+  });
+}

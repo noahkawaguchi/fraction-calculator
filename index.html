@@ -119,16 +119,23 @@
         </div>
       </div>
       <div id="calculate-div">
+        <div id="result-kind">
+          <label for="result-kind-select" id="result-kind-label">See result as:</label>
+          <select name="result-kind-select" id="result-kind-select">
+            <option selected>Mixed Number</option>
+            <option>Improper Fraction</option>
+            <option>Decimal</option>
+          </select>
+        </div>
         <button id="calculate-btn">Calculate</button>
       </div>
-      <div id="result-area">
-        <p id="result"></p>
-        <label for="result-kind">See results as:</label>
-        <select name="result-kind" id="result-kind">
-          <option selected>Mixed Number</option>
-          <option>Improper Fraction</option>
-          <option>Decimal</option>
-        </select>
+      <div>
+        <div id="result-area">
+          <p id="result-text">Result:</p>
+          <div id="result-number">
+            <p id="result-tex"></p>
+          </div>
+        </div>
       </div>
     </main>
     <script type="module" src="./src/main.ts"></script>

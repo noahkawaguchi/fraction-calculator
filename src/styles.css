@@ -1,3 +1,8 @@
+:root {
+  --calm-purple-dark: #4c486a;
+  --calm-purple-light: #cecaec;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,21 +12,29 @@ body {
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+main > * {
+  margin: auto;
+}
+
 main * {
   font-size: 1rem;
+  font-family: inherit;
 }
 
 #tag-line {
   font-style: italic;
-  color:#a6a4b6;
+  color: var(--calm-purple-light);
   margin: 15px auto 40px;
 }
 
@@ -34,9 +47,16 @@ main * {
   margin: auto;
 }
 
+select {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
 .number-area {
   border: 1px solid black;
-  background-color: #4c486a;
+  border-radius: 10px;
+  background-color: var(--calm-purple-dark);
   padding: 5px;
 }
 
@@ -49,6 +69,9 @@ main * {
 .number-input {
   width: 6ch;
   margin: 5px;
+  border-style: none;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 hr {
@@ -73,8 +96,52 @@ hr {
 
 #operation {
   font-size: 1.35rem;
+  border-radius: 5px;
 }
 
 #calculate-div {
   margin: 20px auto;
+}
+
+#calculate-btn {
+  padding: 8px;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+#result-area hr {
+  color: black;
+}
+
+#result-text {
+  font-size: 1.3rem;
+  margin: 10px auto;
+}
+
+#result-number {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: var(--calm-purple-light);
+  color: black;
+}
+
+#result-kind {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#result-kind-label {
+  margin: 10px auto 5px;
+}
+
+.katex {
+  transform: scale(1.5);
+}
+
+.katex .frac-line {
+  border-top: 2px solid black;
 }
