@@ -29,8 +29,9 @@ const secondNumber = new NumberInput(
 
 const result = new Result(
   document.getElementById('operation') as HTMLSelectElement,
-  document.getElementById('result-tex') as HTMLParagraphElement,
   document.getElementById('result-kind-select') as HTMLSelectElement,
+  document.getElementById('result-div') as HTMLDivElement,
+  document.getElementById('result-tex') as HTMLParagraphElement,
 )
 
 const calculateBtn = document.getElementById('calculate-btn') as HTMLButtonElement;

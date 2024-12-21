@@ -100,46 +100,37 @@ hr {
 }
 
 #calculate-div {
-  margin: 20px auto;
+  margin: 35px auto 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#result-kind-select {
+  margin: 8px auto;
 }
 
 #calculate-btn {
-  padding: 8px;
+  padding: 7px;
   border-radius: 10px;
   background-color: white;
   cursor: pointer;
 }
 
-#result-area hr {
-  color: black;
-}
-
 #result-text {
   font-size: 1.3rem;
-  margin: 10px auto;
+  margin: 10px auto -5px;
 }
 
-#result-number {
-  display: flex;
-  justify-content: center;
+#result-tex {
+  padding: 5px 20px;
   border: 1px solid black;
   border-radius: 10px;
   background-color: var(--calm-purple-light);
   color: black;
 }
 
-#result-kind {
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-#result-kind-label {
-  margin: 10px auto 5px;
-}
-
-.katex {
-  transform: scale(1.5);
+.katex * {
+  font-size: 2rem;
 }
 
 .katex .frac-line {

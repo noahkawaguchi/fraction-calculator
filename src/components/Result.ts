@@ -4,8 +4,9 @@ import Fraction from "fraction.js"
 export class Result {
   constructor(
     private operation: HTMLSelectElement,
-    private tex: HTMLParagraphElement,
     private kind: HTMLSelectElement,
+    private div: HTMLDivElement,
+    private tex: HTMLParagraphElement,
   ) {}
 
   /**
@@ -46,5 +47,8 @@ export class Result {
         break;
       default:
     }
+
+    this.div.hidden = false;
+
   }
 }
