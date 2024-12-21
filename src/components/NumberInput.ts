@@ -1,22 +1,65 @@
 import Fraction from "fraction.js";
 
+import { Utils } from "../utils/Utils";
+
 /** 
  * Handles element visibility, input validation, and Fraction conversion for user input of numbers.
  */
 export class NumberInput {
-  constructor(
-    private negativeSign: HTMLParagraphElement,
-    private integerInput: HTMLInputElement,
-    private numeratorInput: HTMLInputElement,
-    private denominatorInput: HTMLInputElement,
-    private signSelect: HTMLSelectElement,
-    private kindSelect: HTMLSelectElement,
-  ) {
+  private negativeSign: HTMLParagraphElement;
+  private integerInput: HTMLInputElement;
+  private numeratorInput: HTMLInputElement;
+  private denominatorInput: HTMLInputElement;
+  private signSelect: HTMLSelectElement;
+  private kindSelect: HTMLSelectElement;
+
+  constructor(selectors: {
+    negativeSignId: string,
+    integerInputId: string,
+    numeratorInputId: string,
+    denominatorInputId: string,
+    signSelectId: string,
+    kindSelectId: string,
+  }) {
+    this.negativeSign = Utils.getValidatedElement(
+      selectors.negativeSignId, HTMLParagraphElement
+    ) as HTMLParagraphElement;
+    this.integerInput = Utils.getValidatedElement(
+      selectors.integerInputId, HTMLInputElement
+    ) as HTMLInputElement;
+    this.numeratorInput = Utils.getValidatedElement(
+      selectors.numeratorInputId, HTMLInputElement
+    ) as HTMLInputElement;
+    this.denominatorInput = Utils.getValidatedElement(
+      selectors.denominatorInputId, HTMLInputElement
+    ) as HTMLInputElement;
+    this.signSelect = Utils.getValidatedElement(
+      selectors.signSelectId, HTMLSelectElement
+    ) as HTMLSelectElement;
+    this.kindSelect = Utils.getValidatedElement(
+      selectors.kindSelectId, HTMLSelectElement
+    ) as HTMLSelectElement;
+    
     this.integerInput.addEventListener<'input'>('input', this.enforceNumericInput);
     this.numeratorInput.addEventListener<'input'>('input', this.enforceNumericInput);
     this.denominatorInput.addEventListener<'input'>('input', this.enforceNumericInput);
     this.signSelect.addEventListener<'change'>('change', this.negativeVisibility.bind(this));
     this.kindSelect.addEventListener<'change'>('change', this.responsiveInputVisibility.bind(this));
+  }
+  
+  /**
+   * Creates a Fraction object from the user's inputs. 
+   * @returns the Fraction object
+   */
+  public getFraction(): Fraction {
+    const integerPart: number = parseInt(this.integerInput.value);
+    const numeratorPart: number = parseInt(this.numeratorInput.value);
+    const denominatorPart: number = parseInt(this.denominatorInput.value);
+    const ret = new Fraction((integerPart * denominatorPart + numeratorPart), denominatorPart);
+    if (this.signSelect.value === 'Negative') {
+      return ret.neg();
+    }
+    return ret;
   }
 
   /** Hides or shows the negative sign depending on the user's selection. */
@@ -68,20 +111,5 @@ export class NumberInput {
       default:
         return;
     }
-  }
-
-  /**
-   * Creates a Fraction object from the user's inputs. 
-   * @returns the Fraction object
-   */
-  public getFraction(): Fraction {
-    const integerPart: number = parseInt(this.integerInput.value);
-    const numeratorPart: number = parseInt(this.numeratorInput.value);
-    const denominatorPart: number = parseInt(this.denominatorInput.value);
-    const ret = new Fraction((integerPart * denominatorPart + numeratorPart), denominatorPart);
-    if (this.signSelect.value === 'Negative') {
-      return ret.neg();
-    }
-    return ret;
   }
 }

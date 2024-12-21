@@ -1,25 +1,25 @@
-import "katex/dist/katex.min.css"; // Import KaTeX CSS
+import "katex/dist/katex.min.css"; // KaTeX CSS
 
 import { NumberInput } from "./components/NumberInput";
 import { Result } from "./components/Result";
 
-const firstNumber = new NumberInput(
-  document.getElementById('first-negative') as HTMLParagraphElement,
-  document.getElementById('first-integer') as HTMLInputElement,
-  document.getElementById('first-numerator') as HTMLInputElement,
-  document.getElementById('first-denominator') as HTMLInputElement,
-  document.getElementById('first-sign') as HTMLSelectElement,
-  document.getElementById('first-kind') as HTMLSelectElement,
-);
+const firstNumber = new NumberInput({
+  negativeSignId: 'first-negative',
+  integerInputId: 'first-integer',
+  numeratorInputId: 'first-numerator',
+  denominatorInputId: 'first-denominator',
+  signSelectId: 'first-sign',
+  kindSelectId: 'first-kind',
+});
 
-const secondNumber = new NumberInput(
-  document.getElementById('second-negative') as HTMLParagraphElement,
-  document.getElementById('second-integer') as HTMLInputElement,
-  document.getElementById('second-numerator') as HTMLInputElement,
-  document.getElementById('second-denominator') as HTMLInputElement,
-  document.getElementById('second-sign') as HTMLSelectElement,
-  document.getElementById('second-kind') as HTMLSelectElement,
-);
+const secondNumber = new NumberInput({
+  negativeSignId: 'second-negative',
+  integerInputId: 'second-integer',
+  numeratorInputId: 'second-numerator',
+  denominatorInputId: 'second-denominator',
+  signSelectId: 'second-sign',
+  kindSelectId: 'second-kind',
+});
 
 const result = new Result(
   document.getElementById('operation') as HTMLSelectElement,
