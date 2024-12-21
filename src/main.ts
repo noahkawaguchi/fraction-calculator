@@ -1,3 +1,5 @@
+import "katex/dist/katex.min.css"; // Import KaTeX CSS
+
 import { NumberInput } from "./components/NumberInput";
 import { Result } from "./components/Result";
 

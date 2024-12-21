@@ -1,6 +1,6 @@
 import Fraction from "fraction.js"
-import "katex/dist/katex.min.css"; // Import KaTeX CSS
-import renderMathInElement from "katex/contrib/auto-render"; // For automatic rendering
+
+import { Utils } from "../utils/Utils";
 
 /** Handles Fraction calculations and displaying the results via KaTeX */
 export class Result {
@@ -44,24 +44,13 @@ export class Result {
       case 'Improper Fraction':
         this.tex.textContent = "$$" + result.toLatex() + "$$";
         break;
-      case 'Decimal':
+      case 'Decimal (Rounded)':
         this.tex.textContent = "$$" + result.round(6).valueOf() + "$$";
         break;
       default:
     }
 
     this.div.hidden = false;
-    this.renderAllTex();
-  }
-
-  /** Renders all TeX in the document body */
-  private renderAllTex(): void {
-    renderMathInElement(document.body, {
-        delimiters: [
-            { left: "$$", right: "$$", display: true },  // Display math
-            { left: "\\(", right: "\\)", display: false } // Inline math
-        ],
-        throwOnError: false // Avoid errors breaking the page
-    });
+    Utils.renderAllTex();
   }
 }
