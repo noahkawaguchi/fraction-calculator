@@ -1,4 +1,6 @@
 import Fraction from "fraction.js"
+import "katex/dist/katex.min.css"; // Import KaTeX CSS
+import renderMathInElement from "katex/contrib/auto-render"; // For automatic rendering
 
 /** Handles Fraction calculations and displaying the results via KaTeX */
 export class Result {
@@ -10,9 +12,9 @@ export class Result {
   ) {}
 
   /**
-   * Perform the calculation and display the answer.
-   * @param firstFrac - The first Fraction to use
-   * @param secondFrac - The second Fraction to use
+   * Perform the selected operation and display the result via KaTeX.
+   * @param firstFrac - The first Fraction to operate on
+   * @param secondFrac - The second Fraction to operate on
    */
   public showAnswer(firstFrac: Fraction, secondFrac: Fraction): void {
 
@@ -49,6 +51,17 @@ export class Result {
     }
 
     this.div.hidden = false;
+    this.renderAllTex();
+  }
 
+  /** Renders all TeX in the document body */
+  private renderAllTex(): void {
+    renderMathInElement(document.body, {
+        delimiters: [
+            { left: "$$", right: "$$", display: true },  // Display math
+            { left: "\\(", right: "\\)", display: false } // Inline math
+        ],
+        throwOnError: false // Avoid errors breaking the page
+    });
   }
 }
