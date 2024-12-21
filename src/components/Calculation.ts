@@ -1,17 +1,20 @@
 import Fraction from "fraction.js"
 
+import { NumberInput } from "./NumberInput";
 import { Utils } from "../utils/Utils";
 
-/** Handles Fraction calculations and displaying the results via KaTeX */
-export class Result {
+/** Handles Fraction calculations, button listening, and displaying the results via KaTeX */
+export class Calculation {
   private operation: HTMLSelectElement;
   private kind: HTMLSelectElement;
+  private btn: HTMLButtonElement;
   private div: HTMLDivElement;
   private tex: HTMLParagraphElement;
 
   constructor(selectors: {
     operationId: string,
     kindId: string,
+    btnId: string,
     divId: string,
     texId: string,
   }) {
@@ -21,6 +24,9 @@ export class Result {
     this.kind = Utils.getValidatedElement(
       selectors.kindId, HTMLSelectElement
     ) as HTMLSelectElement;
+    this.btn = Utils.getValidatedElement(
+      selectors.btnId, HTMLButtonElement
+    ) as HTMLButtonElement;
     this.div = Utils.getValidatedElement(
       selectors.divId, HTMLDivElement
     ) as HTMLDivElement;
@@ -30,14 +36,27 @@ export class Result {
   }
 
   /**
-   * Perform the selected operation and display the result via KaTeX.
+   * Attaches an event listener to the calculate button to display the result when clicked
+   * @param firstNumber - The NumberInput object for the first number
+   * @param secondNumber - The NumberInput object for the second number
+   */
+  public listenAndCalculate(firstNumber: NumberInput, secondNumber: NumberInput): void {
+    this.btn.addEventListener('click', () => {
+      this.tex.textContent = this.calculate(firstNumber.getFraction(), secondNumber.getFraction());
+      this.div.hidden = false;
+      Utils.renderAllTex();
+    });
+  }
+
+  /**
+   * Perform the selected operation and format a KaTeX-ready string.
    * @param firstFrac - The first Fraction to operate on
    * @param secondFrac - The second Fraction to operate on
+   * @returns - The TeX string (including $$ $$)
    */
-  public showAnswer(firstFrac: Fraction, secondFrac: Fraction): void {
+  private calculate(firstFrac: Fraction, secondFrac: Fraction): string {
 
     let result = new Fraction(0, 1);
-
     switch (this.operation.value) {
       case '+':
         result = firstFrac.add(secondFrac);
@@ -54,21 +73,21 @@ export class Result {
       default:
         break;
     }
-    
+
+    let result_tex: string = '';
     switch (this.kind.value) {
       case 'Mixed Number':
-        this.tex.textContent = "$$" + result.toLatex(true) + "$$";
+        result_tex = "$$" + result.toLatex(true) + "$$";
         break;
       case 'Improper Fraction':
-        this.tex.textContent = "$$" + result.toLatex() + "$$";
+        result_tex = "$$" + result.toLatex() + "$$";
         break;
       case 'Decimal (Rounded)':
-        this.tex.textContent = "$$" + result.round(6).valueOf() + "$$";
+        result_tex = "$$" + result.round(6).valueOf() + "$$";
         break;
       default:
     }
 
-    this.div.hidden = false;
-    Utils.renderAllTex();
+    return result_tex;
   }
 }

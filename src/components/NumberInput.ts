@@ -40,11 +40,11 @@ export class NumberInput {
       selectors.kindSelectId, HTMLSelectElement
     ) as HTMLSelectElement;
     
-    this.integerInput.addEventListener<'input'>('input', this.enforceNumericInput);
-    this.numeratorInput.addEventListener<'input'>('input', this.enforceNumericInput);
-    this.denominatorInput.addEventListener<'input'>('input', this.enforceNumericInput);
-    this.signSelect.addEventListener<'change'>('change', this.negativeVisibility.bind(this));
-    this.kindSelect.addEventListener<'change'>('change', this.responsiveInputVisibility.bind(this));
+    this.integerInput.addEventListener('input', this.enforceNumericInput);
+    this.numeratorInput.addEventListener('input', this.enforceNumericInput);
+    this.denominatorInput.addEventListener('input', this.enforceNumericInput);
+    this.signSelect.addEventListener('change', this.negativeVisibility.bind(this));
+    this.kindSelect.addEventListener('change', this.responsiveInputVisibility.bind(this));
   }
   
   /**

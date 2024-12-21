@@ -1,7 +1,7 @@
 import "katex/dist/katex.min.css"; // KaTeX CSS
 
 import { NumberInput } from "./components/NumberInput";
-import { Result } from "./components/Result";
+import { Calculation } from "./components/Calculation";
 
 const firstNumber = new NumberInput({
   negativeSignId: 'first-negative',
@@ -21,13 +21,12 @@ const secondNumber = new NumberInput({
   kindSelectId: 'second-kind',
 });
 
-const result = new Result({
+const result = new Calculation({
   operationId: 'operation',
   kindId: 'result-kind-select',
+  btnId: 'calculate-btn',
   divId: 'result-div',
   texId: 'result-tex',
 })
 
-document.getElementById('calculate-btn')?.addEventListener<'click'>(
-  'click', (): void => result.showAnswer(firstNumber.getFraction(), secondNumber.getFraction())
-);
+result.listenAndCalculate(firstNumber, secondNumber);
