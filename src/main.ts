@@ -21,12 +21,12 @@ const secondNumber = new NumberInput({
   kindSelectId: 'second-kind',
 });
 
-const result = new Result(
-  document.getElementById('operation') as HTMLSelectElement,
-  document.getElementById('result-kind-select') as HTMLSelectElement,
-  document.getElementById('result-div') as HTMLDivElement,
-  document.getElementById('result-tex') as HTMLParagraphElement,
-)
+const result = new Result({
+  operationId: 'operation',
+  kindId: 'result-kind-select',
+  divId: 'result-div',
+  texId: 'result-tex',
+})
 
 document.getElementById('calculate-btn')?.addEventListener<'click'>(
   'click', (): void => result.showAnswer(firstNumber.getFraction(), secondNumber.getFraction())

@@ -4,12 +4,30 @@ import { Utils } from "../utils/Utils";
 
 /** Handles Fraction calculations and displaying the results via KaTeX */
 export class Result {
-  constructor(
-    private operation: HTMLSelectElement,
-    private kind: HTMLSelectElement,
-    private div: HTMLDivElement,
-    private tex: HTMLParagraphElement,
-  ) {}
+  private operation: HTMLSelectElement;
+  private kind: HTMLSelectElement;
+  private div: HTMLDivElement;
+  private tex: HTMLParagraphElement;
+
+  constructor(selectors: {
+    operationId: string,
+    kindId: string,
+    divId: string,
+    texId: string,
+  }) {
+    this.operation = Utils.getValidatedElement(
+      selectors.operationId, HTMLSelectElement
+    ) as HTMLSelectElement;
+    this.kind = Utils.getValidatedElement(
+      selectors.kindId, HTMLSelectElement
+    ) as HTMLSelectElement;
+    this.div = Utils.getValidatedElement(
+      selectors.divId, HTMLDivElement
+    ) as HTMLDivElement;
+    this.tex = Utils.getValidatedElement(
+      selectors.texId, HTMLParagraphElement
+    ) as HTMLParagraphElement;
+  }
 
   /**
    * Perform the selected operation and display the result via KaTeX.
