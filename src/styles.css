@@ -107,8 +107,12 @@ hr {
   margin: 5px;
 }
 
+.sign-and-int {
+  display: flex;
+}
+
 .negative-sign {
-  margin: auto;
+  margin: 10px;
 }
 
 #operation-div {
