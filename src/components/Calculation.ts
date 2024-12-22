@@ -3,7 +3,7 @@ import Fraction from "fraction.js"
 import { NumberInput } from "./NumberInput";
 import { Utils } from "../utils/Utils";
 
-/** Handles Fraction calculations, button listening, and displaying the results via KaTeX */
+/** Handles button listening, Fraction calculations, and displaying the results via KaTeX */
 export class Calculation {
   private operation: HTMLSelectElement;
   private kind: HTMLSelectElement;
@@ -36,15 +36,24 @@ export class Calculation {
   }
 
   /**
-   * Attaches an event listener to the calculate button to display the result when clicked
+   * Attaches an event listener to the calculate button to display the result when clicked. 
+   * Division by zero will trigger an alert and no result will be shown.
    * @param firstNumber - The NumberInput object for the first number
    * @param secondNumber - The NumberInput object for the second number
    */
   public listenAndCalculate(firstNumber: NumberInput, secondNumber: NumberInput): void {
     this.btn.addEventListener('click', () => {
-      this.tex.textContent = this.calculate(firstNumber.getFraction(), secondNumber.getFraction());
-      this.div.hidden = false;
-      Utils.renderAllTex();
+      const firstFrac: Fraction = firstNumber.getFraction();
+      const secondFrac: Fraction = secondNumber.getFraction();
+      if (this.operation.value === '÷' && secondFrac.valueOf() === 0) {
+        this.div.hidden = true;
+        alert('Cannot divide by 0');
+        return;
+      } else {
+        this.tex.textContent = this.calculate(firstFrac, secondFrac);
+        this.div.hidden = false;
+        Utils.renderAllTex();
+      }
     });
   }
 

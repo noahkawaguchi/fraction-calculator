@@ -1,3 +1,10 @@
-test('dummy test', () => {
-  expect(1).toBe(1);
+import { Calculation } from "./Calculation";
+
+describe('Calculation', () => {
+
+  beforeEach(() => {
+    
+  });
+
+
 });
