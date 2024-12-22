@@ -51,19 +51,40 @@ select {
   border: 1px solid black;
   border-radius: 5px;
   padding: 3px;
+  width: 100%;
 }
 
 .number-area {
   border: 1px solid black;
   border-radius: 10px;
   background-color: var(--calm-purple-dark);
-  padding: 5px;
+  padding: 6px;
 }
 
 .input-area {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.label-and-select {
+  display: flex;
+}
+
+.label-and-select > * {
+  margin: auto;
+}
+
+.number-option-label {
+  margin-right: 3px;
+}
+
+.label-select-column {
+  flex-direction: column;
+}
+
+.label-select-column > select {
+  margin: 8px auto;
 }
 
 .number-input {
@@ -105,10 +126,6 @@ hr {
   flex-direction: column;
 }
 
-#result-kind-select {
-  margin: 8px auto;
-}
-
 #calculate-btn {
   padding: 7px;
   border-radius: 10px;
@@ -127,6 +144,10 @@ hr {
   border-radius: 10px;
   background-color: var(--calm-purple-light);
   color: black;
+}
+
+.hidden-label {
+  display: none;
 }
 
 .katex * {

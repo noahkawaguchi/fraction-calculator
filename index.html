@@ -17,6 +17,7 @@
           <div class="input-area">
             <p id="first-negative" class="negative-sign" hidden>—</p>
             <div>
+              <label for="first-integer" class="hidden-label">Integer part:</label>
               <input 
                 id="first-integer"
                 class="number-input"
@@ -29,6 +30,7 @@
               >
             </div>
             <div class="fraction-input">
+              <label for="first-numerator" class="hidden-label">Numerator:</label>
               <input 
                 id="first-numerator"
                 class="number-input"
@@ -38,6 +40,7 @@
                 inputmode="numeric"
                 onclick="this.select()"
               ><br><hr>
+              <label for="first-denominator" class="hidden-label">Denominator:</label>
               <input 
                 id="first-denominator"
                 class="number-input"
@@ -50,29 +53,39 @@
             </div>
           </div>
           <div class="number-options">
-            <select name="first-sign" id="first-sign">
-              <option selected>Positive</option>
-              <option>Negative</option>
-            </select>
-            <select name="first-kind" id="first-kind">
-              <option selected>Fraction</option>
-              <option>Mixed Number</option>
-              <option>Integer</option>
-            </select>
+            <div class="label-and-select">
+              <label for="first-sign" class="number-option-label">Sign:</label>
+              <select name="first-sign" id="first-sign">
+                <option selected>Positive</option>
+                <option>Negative</option>
+              </select>
+            </div>
+            <div class="label-and-select">
+              <label for="first-kind" class="number-option-label">Kind:</label>
+              <select name="first-kind" id="first-kind">
+                <option selected>Fraction</option>
+                <option>Mixed Number</option>
+                <option>Integer</option>
+              </select>
+            </div>
           </div>
         </div>
         <div id="operation-div">
-          <select id="operation">
-            <option selected>+</option>
-            <option>-</option>
-            <option>✕</option>
-            <option>÷</option>
-          </select>
+          <div class="label-and-select label-select-column">
+            <label for="operation">Operation:</label>
+            <select id="operation">
+              <option selected>+</option>
+              <option>-</option>
+              <option>✕</option>
+              <option>÷</option>
+            </select>
+          </div>
         </div>
         <div class="number-area">
           <div class="input-area">
             <p id="second-negative" class="negative-sign" hidden>—</p>
             <div>
+              <label for="second-integer" class="hidden-label">Integer part:</label>
               <input 
                 id="second-integer"
                 class="number-input"
@@ -85,6 +98,7 @@
               >
             </div>
             <div class="fraction-input">
+              <label for="second-numerator" class="hidden-label">Numerator:</label>
               <input 
                 id="second-numerator"
                 class="number-input"
@@ -94,6 +108,7 @@
                 inputmode="numeric"
                 onclick="this.select()"
               ><br><hr>
+              <label for="second-denominator" class="hidden-label">Denominator:</label>
               <input 
                 id="second-denominator"
                 class="number-input"
@@ -106,25 +121,33 @@
             </div>
           </div>
           <div class="number-options">
-            <select name="second-sign" id="second-sign">
-              <option selected>Positive</option>
-              <option>Negative</option>
-            </select>
-            <select name="second-kind" id="second-kind">
-              <option selected>Fraction</option>
-              <option>Mixed Number</option>
-              <option>Integer</option>
-            </select>
+            <div class="label-and-select">
+              <label for="second-sign" class="number-option-label">Sign:</label>
+              <select name="second-sign" id="second-sign">
+                <option selected>Positive</option>
+                <option>Negative</option>
+              </select>
+            </div>
+            <div class="label-and-select">
+              <label for="second-kind" class="number-option-label">Kind:</label>
+              <select name="second-kind" id="second-kind">
+                <option selected>Fraction</option>
+                <option>Mixed Number</option>
+                <option>Integer</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
       <div id="calculate-div">
-        <label for="result-kind-select" id="result-kind-label">Show result as:</label>
-        <select name="result-kind-select" id="result-kind-select">
-          <option selected>Mixed Number</option>
-          <option>Improper Fraction</option>
-          <option>Decimal (Rounded)</option>
-        </select>
+        <div class="label-and-select label-select-column">
+          <label for="result-kind-select">Show result as:</label>
+          <select name="result-kind-select" id="result-kind-select">
+            <option selected>Mixed Number</option>
+            <option>Improper Fraction</option>
+            <option>Decimal (Rounded)</option>
+          </select>
+        </div>
         <button id="calculate-btn">Calculate</button>
       </div>
       <div id="result-div" hidden>
