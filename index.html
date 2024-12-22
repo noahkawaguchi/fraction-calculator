@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Calculator</title>
+    <script type="module" crossorigin src="/fraction-calculator/assets/index-CU5Rnzyq.js"></script>
+    <link rel="stylesheet" crossorigin href="/fraction-calculator/assets/index-8Bpi23bp.css">
+  </head>
+  <body>
+    <header>
+      <h1>Fraction Calculator</h1>
+      <p id="tag-line">Most calculators think in decimals. <br>This one thinks in fractions.</p>
+    </header>
+    <main>
+      <div id="input-form">
+        <div class="number-area">
+          <div class="input-area">
+            <div class="sign-and-int">
+              <p id="first-negative" class="negative-sign" hidden>—</p>
+              <label for="first-integer" class="hidden-label">Integer part:</label>
+              <input 
+                id="first-integer"
+                class="number-input"
+                type="number"
+                value="0"
+                min="0"
+                inputmode="numeric"
+                onclick="this.select()"
+                hidden
+              >
+            </div>
+            <div class="fraction-input">
+              <label for="first-numerator" class="hidden-label">Numerator:</label>
+              <input 
+                id="first-numerator"
+                class="number-input"
+                type="number"
+                value="0"
+                min="0"
+                inputmode="numeric"
+                onclick="this.select()"
+              ><br><hr>
+              <label for="first-denominator" class="hidden-label">Denominator:</label>
+              <input 
+                id="first-denominator"
+                class="number-input"
+                type="number"
+                value="1"
+                min="1"
+                inputmode="numeric"
+                onclick="this.select()"
+              >
+            </div>
+          </div>
+          <div class="number-options">
+            <div class="label-and-select">
+              <label for="first-sign" class="number-option-label">Sign:</label>
+              <select name="first-sign" id="first-sign">
+                <option selected>Positive</option>
+                <option>Negative</option>
+              </select>
+            </div>
+            <div class="label-and-select">
+              <label for="first-kind" class="number-option-label">Kind:</label>
+              <select name="first-kind" id="first-kind">
+                <option selected>Fraction</option>
+                <option>Mixed Number</option>
+                <option>Integer</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="operation-div">
+          <div class="label-and-select label-select-column">
+            <label for="operation">Operation:</label>
+            <select id="operation">
+              <option selected>+</option>
+              <option>-</option>
+              <option>✕</option>
+              <option>÷</option>
+            </select>
+          </div>
+        </div>
+        <div class="number-area">
+          <div class="input-area">
+            <div class="sign-and-int">
+              <p id="second-negative" class="negative-sign" hidden>—</p>
+              <label for="second-integer" class="hidden-label">Integer part:</label>
+              <input 
+                id="second-integer"
+                class="number-input"
+                type="number"
+                value="0"
+                min="0"
+                inputmode="numeric"
+                onclick="this.select()"
+                hidden
+              >
+            </div>
+            <div class="fraction-input">
+              <label for="second-numerator" class="hidden-label">Numerator:</label>
+              <input 
+                id="second-numerator"
+                class="number-input"
+                type="number"
+                value="0"
+                min="0"
+                inputmode="numeric"
+                onclick="this.select()"
+              ><br><hr>
+              <label for="second-denominator" class="hidden-label">Denominator:</label>
+              <input 
+                id="second-denominator"
+                class="number-input"
+                type="number"
+                value="1"
+                min="1"
+                inputmode="numeric"
+                onclick="this.select()"
+              >
+            </div>
+          </div>
+          <div class="number-options">
+            <div class="label-and-select">
+              <label for="second-sign" class="number-option-label">Sign:</label>
+              <select name="second-sign" id="second-sign">
+                <option selected>Positive</option>
+                <option>Negative</option>
+              </select>
+            </div>
+            <div class="label-and-select">
+              <label for="second-kind" class="number-option-label">Kind:</label>
+              <select name="second-kind" id="second-kind">
+                <option selected>Fraction</option>
+                <option>Mixed Number</option>
+                <option>Integer</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="calculate-div">
+        <div class="label-and-select label-select-column">
+          <label for="result-kind-select">Show result as:</label>
+          <select name="result-kind-select" id="result-kind-select">
+            <option selected>Mixed Number</option>
+            <option>Improper Fraction</option>
+            <option>Decimal (Rounded)</option>
+          </select>
+        </div>
+        <button id="calculate-btn">Calculate</button>
+      </div>
+      <div id="result-div" hidden>
+        <p id="result-text">Result:</p>
+        <p id="result-tex"></p>
+      </div>
+    </main>
+  </body>
+</html>
