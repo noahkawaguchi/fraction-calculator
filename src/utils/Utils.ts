@@ -15,7 +15,7 @@ export class Utils {
       throw new Error(`Element with ID "${id}" not found`);
     }
     if (!(element instanceof type)) {
-      throw new Error(`Element with ID ${id} is not of type ${type.name}`)
+      throw new Error(`Element with ID "${id}" is not of type ${type.name}`)
     }
     return element;
   }
