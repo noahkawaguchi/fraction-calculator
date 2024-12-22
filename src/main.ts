@@ -21,7 +21,7 @@ const secondNumber = new NumberInput({
   kindSelectId: 'second-kind',
 });
 
-const result = new Calculation({
+const calculation = new Calculation({
   operationId: 'operation',
   kindId: 'result-kind-select',
   divId: 'result-div',
@@ -29,6 +29,6 @@ const result = new Calculation({
 })
 
 Utils.getValidatedElement('calculate-btn', HTMLButtonElement).addEventListener('click', () => {
-  result.calculateAndInsertTex(firstNumber.getFraction(), secondNumber.getFraction());
+  calculation.calculateAndInsertTex(firstNumber.getFraction(), secondNumber.getFraction());
   Utils.renderAllTex();
 });
