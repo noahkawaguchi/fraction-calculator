@@ -139,7 +139,7 @@ describe('NumberInput instance', () => {
 });
 
 describe('getFraction', () => {
-  it('should create a Fraction object from user inputs', async () => {
+  it('should create the correct Fraction object from user inputs', async () => {
     document.body.innerHTML = `
       <p id="negative-sign" hidden>—</p>
       <label for="integer-input" style="display: none;">Integer part:</label>

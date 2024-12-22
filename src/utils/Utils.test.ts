@@ -18,12 +18,12 @@ describe('getValidatedElement', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it("should throw an error for an element that doesn't exist", () => {
+  it("should throw an error if the element doesn't exist", () => {
     expect(() => Utils.getValidatedElement('not-here', HTMLParagraphElement))
       .toThrow('Element with ID "not-here" not found');
   });
 
-  it('should throw an error for an element of the incorrect type', () => {
+  it('should throw an error if the type and element do not match', () => {
     expect(() => Utils.getValidatedElement('input-field', HTMLSelectElement))
       .toThrow('Element with ID "input-field" is not of type HTMLSelectElement');
   });
