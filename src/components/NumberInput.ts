@@ -42,7 +42,7 @@ export class NumberInput {
     
     this.integerInput.addEventListener('input', this.enforceNumericInput);
     this.numeratorInput.addEventListener('input', this.enforceNumericInput);
-    this.denominatorInput.addEventListener('input', this.enforceNumericInput);
+    this.denominatorInput.addEventListener('input', this.enforceNonzeroNumericInput);
     this.signSelect.addEventListener('change', this.negativeVisibility.bind(this));
     this.kindSelect.addEventListener('change', this.responsiveInputVisibility.bind(this));
   }
@@ -78,6 +78,23 @@ export class NumberInput {
   private enforceNumericInput(event: Event): void {
     const target = event.currentTarget as HTMLInputElement;
     target.value = target.value.replace(/[^\d]/g, '');
+  }
+
+  /**
+   * Removes any non-numeric characters from an input element as they are entered and prevents 
+   * division by zero. Entering only 0s in the denominator will trigger an alert and the value 
+   * will revert to 1. 
+   * @param event - the input event that triggers the method
+   */
+  private enforceNonzeroNumericInput(event: Event): void {
+    const target = event.currentTarget as HTMLInputElement;
+    target.value = target.value.replace(/[^\d]/g, ''); // Numeric only
+    const allZeros: RegExp = /^0+$/;
+    if (allZeros.test(target.value)) {
+      target.value = '1';
+      alert('Denominator cannot be 0');
+      return;
+    }
   }
 
   /**
