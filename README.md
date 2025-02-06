@@ -7,6 +7,6 @@ I often find myself wishing I could work with fractions directly in a calculator
 This is a basic frontend-only project through which I work on the following skills:
 
 - Writing TypeScript, HTML, and CSS without a framework like React
-- Setting up a project with npm and Vite
+- Setting up a project with pnpm and Vite
 - Integrating [fraction.js](https://github.com/rawify/Fraction.js) and [KaTeX](https://github.com/KaTeX/KaTeX)
 - Testing with Jest and Testing Library

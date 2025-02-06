@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "test": "node --no-deprecation ./node_modules/.bin/jest --verbose",
+    "test": "node --no-deprecation ./node_modules/jest/bin/jest.js --verbose",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -16,20 +16,20 @@
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/user-event": "^14.5.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
     "@types/katex": "^0.16.7",
-    "@types/node": "^22.10.2",
-    "gh-pages": "^6.2.0",
+    "@types/node": "^22.13.1",
+    "gh-pages": "^6.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.3"
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
   },
   "dependencies": {
     "fraction.js": "^5.2.1",
-    "katex": "^0.16.18"
+    "katex": "^0.16.21"
   }
 }
